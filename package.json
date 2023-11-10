@@ -2,7 +2,7 @@
   "name": "mixmasters-pet-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://demiggv.github.io/mixmasters-pet/",
+  "homepage": "https://demiggv.github.io/Mixmasters-pet/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.16.3",
