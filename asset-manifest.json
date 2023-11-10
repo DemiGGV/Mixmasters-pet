@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Mixmasters-pet/static/css/main.3bcbd3ab.css",
-    "main.js": "/Mixmasters-pet/static/js/main.66b11b39.js",
+    "main.js": "/Mixmasters-pet/static/js/main.23279ef1.js",
     "static/js/765.904cfbd6.chunk.js": "/Mixmasters-pet/static/js/765.904cfbd6.chunk.js",
     "static/js/477.215a155c.chunk.js": "/Mixmasters-pet/static/js/477.215a155c.chunk.js",
     "static/js/515.cfb90155.chunk.js": "/Mixmasters-pet/static/js/515.cfb90155.chunk.js",
@@ -38,7 +38,7 @@
     "static/media/welcome-mob.jpg": "/Mixmasters-pet/static/media/welcome-mob.cc00c21e562de1207966.jpg",
     "index.html": "/Mixmasters-pet/index.html",
     "main.3bcbd3ab.css.map": "/Mixmasters-pet/static/css/main.3bcbd3ab.css.map",
-    "main.66b11b39.js.map": "/Mixmasters-pet/static/js/main.66b11b39.js.map",
+    "main.23279ef1.js.map": "/Mixmasters-pet/static/js/main.23279ef1.js.map",
     "765.904cfbd6.chunk.js.map": "/Mixmasters-pet/static/js/765.904cfbd6.chunk.js.map",
     "477.215a155c.chunk.js.map": "/Mixmasters-pet/static/js/477.215a155c.chunk.js.map",
     "515.cfb90155.chunk.js.map": "/Mixmasters-pet/static/js/515.cfb90155.chunk.js.map",
@@ -61,6 +61,6 @@
   },
   "entrypoints": [
     "static/css/main.3bcbd3ab.css",
-    "static/js/main.66b11b39.js"
+    "static/js/main.23279ef1.js"
   ]
 }
