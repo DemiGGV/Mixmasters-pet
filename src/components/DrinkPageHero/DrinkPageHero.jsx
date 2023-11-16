@@ -14,7 +14,7 @@ import {
   ContainerImage,
 } from './DrinkPageHero.styled';
 import defaultImage from '../../assets/rectangle-1.png';
-import { useAuth } from 'useAuth';
+import { useAuth } from 'hooks/useAuth';
 import { useState } from 'react';
 
 export function DrinkPageHero({ drinkInfo }) {
@@ -54,7 +54,8 @@ export function DrinkPageHero({ drinkInfo }) {
       if (!addDrink.error) {
         setIsFavorite(true);
         toast.success('Drink added to favorite!');
-      } else { toast.error('Something went wrong please try later!');
+      } else {
+        toast.error('Something went wrong please try later!');
       }
     } catch (error) {
       toast.error(`${error.message}`);
