@@ -11,12 +11,6 @@ export const styles = {
     cursor: 'pointer',
   }),
 
-  // option: baseStyles => ({
-  //   ...baseStyles,
-  //   padding: '16px 18px',
-  //   width: '200px',
-  // }),
-
   menu: baseStyles => ({
     ...baseStyles,
     width: '100%',
