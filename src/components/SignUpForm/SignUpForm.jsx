@@ -12,8 +12,8 @@ import {
   InputBlock,
   StyledInput,
   StyledDatePicker,
-  StyledIconСalendar,
-  IconСalendar,
+  StyledIconCalendar,
+  IconCalendar,
   ErrorContainer,
   ErrorMessage,
   StyledBtn,
@@ -136,11 +136,11 @@ const AuthForm = () => {
               scrollableMonthDropdown
               dropdownMode="select"
             />
-            <StyledIconСalendar onClick={openCalendar}>
-              <IconСalendar>
+            <StyledIconCalendar onClick={openCalendar}>
+              <IconCalendar>
                 <use href={sprite + '#icon-calendar'} />
-              </IconСalendar>
-            </StyledIconСalendar>
+              </IconCalendar>
+            </StyledIconCalendar>
 
             {formik.touched.birthdate && formik.errors.birthdate && (
               <ErrorContainer>

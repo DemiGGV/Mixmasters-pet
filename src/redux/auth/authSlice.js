@@ -113,7 +113,7 @@ const authSlice = createSlice({
       .addCase(subscribeUser.rejected, handleRejected);
   },
 });
-
+//
 const persistConfig = {
   key: 'root',
   storage,

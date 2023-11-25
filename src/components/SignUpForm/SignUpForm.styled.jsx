@@ -151,7 +151,7 @@ export const StyledDatePicker = styled(DatePicker)`
   }
 `;
 
-export const StyledIconСalendar = styled.div`
+export const StyledIconCalendar = styled.div`
   position: absolute;
   top: 100px;
   transform: translateY(-50%);
@@ -159,7 +159,7 @@ export const StyledIconСalendar = styled.div`
   cursor: pointer;
 `;
 
-export const IconСalendar = styled.svg`
+export const IconCalendar = styled.svg`
   width: 24px;
   height: 24px;
 `;
