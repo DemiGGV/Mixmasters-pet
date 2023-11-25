@@ -1,17 +1,16 @@
 import styled from 'styled-components';
 
 export const ContainerHero = styled.div`
- 
   @media screen and (min-width: 1440px) {
     display: flex;
     justify-content: space-between;
-    margin-bottom:100px;
+    margin-bottom: 100px;
     padding-top: 132px;
   }
 `;
 
 export const PageTitle = styled.h1`
-color:var(--btn-color);
+  color: var(--btn-color);
   margin-bottom: 8px;
   font-size: 32px;
   font-weight: 600;
@@ -99,7 +98,7 @@ export const Button = styled.button`
 
 export const ContainerImage = styled.div`
   background-color: rgba(22, 31, 55, 0.5);
-  background-image: ${props => `url(${props.img})`};
+  background-image: ${props => `url(${props.$img})`};
   border-radius: 8px;
   margin-bottom: 18px;
   width: 335px;

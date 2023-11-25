@@ -62,7 +62,7 @@ export const ContainerImage = styled.div`
 export const Image = styled.div`
   /* padding: 22px 23px 23px 22px; */
   /* background-color: rgba(22, 31, 55, 0.5); */
-  background-image: ${props => `url(${props.img})`};
+  background-image: ${props => `url(${props.$img})`};
   /* border-radius: 8px; */
   /* margin-bottom: 8px; */
   width: 107px;

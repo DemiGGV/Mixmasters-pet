@@ -26,7 +26,7 @@ export function DrinkPageHero({ drinkInfo }) {
     alcoholic,
     glass,
     shortDescription,
-    drinkThumb,
+    drinkThumb = defaultImage,
     favorite,
   } = drinkInfo;
   const [isFavorite, setIsFavorite] = useState(() =>
@@ -80,11 +80,7 @@ export function DrinkPageHero({ drinkInfo }) {
           </Button>
         )}
       </ContainerDescription>
-      {drinkThumb ? (
-        <ContainerImage img={drinkThumb} />
-      ) : (
-        <ContainerImage img={defaultImage} />
-      )}
+      <ContainerImage $img={drinkThumb} />
     </ContainerHero>
   );
 }

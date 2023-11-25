@@ -15,15 +15,15 @@ export function DrinkIngredientsList({ ingredients }) {
     <>
       <Subtitle>Ingredients</Subtitle>
       <IngredientsContainer>
-        {ingredients.map(({ _id, title, ingredientId, measure }) => {
- const { ingredientThumb } = ingredientId;
+        {ingredients.map(({ title, ingredientId, measure }) => {
+          const { ingredientThumb, _id } = ingredientId;
           return (
             <IngredientItem key={_id}>
               <ContainerImage>
                 {ingredientThumb ? (
-                  <Image img={ingredientThumb} />
+                  <Image $img={ingredientThumb} />
                 ) : (
-                  <Image img={defaultImage} />
+                  <Image $img={defaultImage} />
                 )}
               </ContainerImage>
 
