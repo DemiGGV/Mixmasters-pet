@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-
 export const addMyDrinks = createAsyncThunk(
   'drinks/addMyDrinks',
   async (_, thunkAPI) => {
@@ -89,6 +88,7 @@ export const getDrinkById = createAsyncThunk(
     }
   }
 );
+
 export const fetchMainpage = createAsyncThunk(
   'drinks/fetchMainpage',
   async (count, thunkAPI) => {
@@ -101,20 +101,6 @@ export const fetchMainpage = createAsyncThunk(
   }
 );
 
-// export const fetchAllDrinks = createAsyncThunk(
-//   'drinks/fetchAllDrinks',
-//   async ({ page, limit }, thunkAPI) => {
-//     try {
-//       const response = await axios.get(
-//         `/drinks/search?page=${page}&limit=${limit}`
-//       );
-//       return response.data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
-
 export const fetchPopularDrinks = createAsyncThunk(
   'drinks/fetchPopularDrinks',
   async (_, thunkAPI) => {
@@ -126,11 +112,3 @@ export const fetchPopularDrinks = createAsyncThunk(
     }
   }
 );
-
-// export const setLimitValue = createAsyncThunk('drinks/setLimitValue', limit => {
-//   return limit;
-// });
-
-// export const setPageValue = createAsyncThunk('drinks/setPageValue', page => {
-//   return page;
-// });
