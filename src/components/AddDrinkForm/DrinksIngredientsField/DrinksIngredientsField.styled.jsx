@@ -3,7 +3,8 @@ import { Field } from 'formik';
 
 /////////////////////////////////////////////////////
 export const Wrapper = styled.div`
-  margin-bottom: 80px @media (min-width: 1028px) {
+  margin-bottom: 80px;
+  @media (min-width: 1028px) {
     width: 540px;
   }
 `;
@@ -128,7 +129,7 @@ export const FieldStyle = styled(Field)`
 `;
 
 export const DeleteBtn = styled.button`
- display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   width: 18px;
@@ -139,7 +140,9 @@ export const DeleteBtn = styled.button`
   stroke: var(--text-color);
   @media screen and (min-width: 768px) {
     width: 20px;
-    height: 20px;`;
+    height: 20px;
+  }
+`;
 
 export const DeleteIcon = styled.svg`
   stroke: #f3f3f3;
@@ -168,11 +171,9 @@ export const SpriteIconMinus = styled.svg`
   height: 16px;
   fill: rgba(243, 243, 243, 1);
 
-  @media {
+  /* @media {
     min-width: 768px;
-  }
-   {
-  }
+  } */
 `;
 
 export const SpriteIconPlus = styled.svg`
@@ -180,11 +181,9 @@ export const SpriteIconPlus = styled.svg`
   height: 16px;
   fill: rgba(243, 243, 243, 1);
 
-  @media {
+  /* @media {
     min-width: 768px;
-  }
-   {
-  }
+  } */
 `;
 
 export const StyledButton = styled.button`

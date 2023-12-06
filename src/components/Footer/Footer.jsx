@@ -1,4 +1,3 @@
-import React from 'react';
 import Logo from '../Footer/LogoFooter/LogoFooter';
 import { Nav } from './Nav/Nav';
 import EmailSubscription from './EmailSubscription/EmailSubscription';

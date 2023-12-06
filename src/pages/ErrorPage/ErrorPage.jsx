@@ -1,4 +1,3 @@
-import React from 'react';
 import DrinkDefault from '../../assets/blue-iced-tea.png';
 import DrinkImage2 from '../../assets/blue-iced-tea@2x.png';
 import DrinkImg1 from '../../assets/blue-iced-tea.png';

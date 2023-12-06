@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { StyledArrows, StyledPagination } from './MyPaginator.styled';
 import sprite from 'assets/sprite.svg';
 

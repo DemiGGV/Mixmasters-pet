@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Header, HeaderWrapper } from './Header.styled';
 import Logo from '../Logo/Logo';

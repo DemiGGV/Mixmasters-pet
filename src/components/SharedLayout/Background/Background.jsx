@@ -1,8 +1,7 @@
-import React from 'react';
 import {
   ContainerLayout,
   GradientContainer,
-  CircleContainer
+  CircleContainer,
 } from './Background.styled';
 
 const Background = ({ children }) => {

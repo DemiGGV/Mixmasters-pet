@@ -1,4 +1,3 @@
-import React from 'react';
 import { LogoGroup, Icon, Name, LogoLink } from './LogoFooter.styled';
 import icons from '../../../assets/sprite.svg';
 

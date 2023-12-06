@@ -1,4 +1,4 @@
-import React from 'react';
+import { StrictMode } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
@@ -9,14 +9,14 @@ import { Toaster } from 'react-hot-toast';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  <StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter basename="/Mixmasters-pet">
-        <Toaster position="top-right" reverseOrder={false} />
+          <Toaster position="top-right" reverseOrder={false} />
           <App />
         </BrowserRouter>
       </PersistGate>
     </Provider>
-  </React.StrictMode>
+  </StrictMode>
 );

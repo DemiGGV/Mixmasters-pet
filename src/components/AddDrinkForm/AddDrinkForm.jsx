@@ -1,4 +1,3 @@
-import React from 'react';
 import { Formik, Form, useFormik } from 'formik';
 import { DrinkDescriptionFields } from 'components/AddDrinkForm/DrinkDescriptionFields/DrinkDescriptionFields';
 import DrinkIngredientsFields from 'components/AddDrinkForm/DrinksIngredientsField/DrinksIngredientsField';

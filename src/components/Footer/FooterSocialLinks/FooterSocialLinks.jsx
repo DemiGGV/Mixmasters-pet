@@ -1,4 +1,3 @@
-import React from 'react';
 import icons from '../../../assets/sprite.svg';
 import {
   Container,

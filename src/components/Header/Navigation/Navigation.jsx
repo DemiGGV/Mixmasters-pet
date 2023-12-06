@@ -1,9 +1,9 @@
-import React, { forwardRef, useState } from 'react';
+import { forwardRef, useState } from 'react';
 import { Nav, List, Item, NavigationLink } from './Navigation.styled';
 import { motion } from 'framer-motion';
 
 const Navigation = forwardRef((props, ref) => {
-  const [isMenuOpen, ] = useState(true);
+  const [isMenuOpen] = useState(true);
 
   const navAnimation = {
     hidden: { opacity: 0, y: -100 },
