@@ -13,10 +13,14 @@ export const DrinksSearch = ({ query, category, ingredient, onChange }) => {
   const categorySelectOptions = categories.map(category => {
     return { value: category, label: category };
   });
+  categorySelectOptions.unshift({ value: '', label: '...' });
   const [ingredients, setIngredients] = useState([]);
   const ingredientSelectOptions = ingredients.map(ingredient => {
     return { value: ingredient.title, label: ingredient.title };
   });
+  ingredientSelectOptions.unshift({ value: '', label: '...' });
+  console.log('✋😎👉 ~ ingredient:', ingredient);
+  console.log('✋😎👉 ~ category:', category);
 
   useEffect(() => {
     async function loadCategories() {
@@ -32,6 +36,7 @@ export const DrinksSearch = ({ query, category, ingredient, onChange }) => {
     async function loadIngredients() {
       try {
         const response = await fetchIngerients();
+
         setIngredients(response);
       } catch (error) {
         if (error.code) {
@@ -51,25 +56,34 @@ export const DrinksSearch = ({ query, category, ingredient, onChange }) => {
           placeholder="Enter the text"
           name="query"
           value={query}
-          onChange={e => onChange('q', e.target.value)}
+          onChange={e => {
+            e.preventDefault();
+            onChange('q', e.target.value);
+          }}
         />
+        {/* <select
+          value={selectedFruit} // ...force the select's value to match the state variable...
+          onChange={e => setSelectedFruit(e.target.value)} // ... and update the state variable on any change!
+        >
+          <option value="apple">Apple</option>
+          <option value="banana">Banana</option>
+          <option value="orange">Orange</option>
+        </select> */}
         <StyledSelectInput
-          classNamePrefix="Select"
-          onChange={e => onChange('category', e.target.value)}
-          placeholder="All categories"
           name="category"
+          classNamePrefix="Select"
+          placeholder="..."
           defaultValue={category}
-          isClearable
           options={categorySelectOptions}
+          onChange={e => onChange('category', e.value)}
         />
         <StyledSelectInput
-          onChange={e => onChange('ingredient', e.target.value)}
-          classNamePrefix="Select"
           name="ingredient"
-          placeholder="Ingredients"
+          classNamePrefix="Select"
+          placeholder="..."
           defaultValue={ingredient}
-          isClearable
           options={ingredientSelectOptions}
+          onChange={e => onChange('ingredient', e.value)}
         ></StyledSelectInput>
       </StyledFilterContainer>
     </label>

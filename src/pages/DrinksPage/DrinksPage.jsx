@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-// import { useSearchParams } from 'react-router-dom';
+import { useState, useEffect, useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
 import { Drinks } from 'components/Drinks/Drinks';
@@ -7,25 +7,31 @@ import { DrinksSearch } from 'components/DrinksSearch/DrinksSearch';
 import { PageTitle } from 'components/PageTitle/PageTitle';
 import Paginator from 'components/Paginator/Paginator';
 import { StyledMainContainer } from './DrinksPage.styled';
-import { fetchDrinks } from '../../components/DrinksSearch/DrinkSearchApi';
+import { fetchDrinks } from 'components/DrinksSearch/DrinkSearchApi';
 import { useWindowWidth } from 'hooks/useWindowWidth';
 
 export const DrinksPage = () => {
-  const [query, setQuery] = useState('');
-  const [category, setCategory] = useState('');
-  const [ingredient, setIngredient] = useState('');
-  const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(10);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const paramsObj = useMemo(
+    () => Object.fromEntries([...searchParams]),
+    [searchParams]
+  );
   const [count, setCount] = useState(0);
-  const [restPages, setRestPages] = useState(0);
+  const [limit, setLimit] = useState(10);
   const [filteredDrinks, setFilteredDrinks] = useState([]);
   const totalPages = Math.ceil(count / limit);
-  // const [searchParams, setSearchParams] = useSearchParams();
   const windowWidth = useWindowWidth();
 
-  // useEffect(() => {
-  //   setSearchParams({ q: query, category: category, ingredient: ingredient });
-  // }, [setSearchParams, query, category, ingredient]);
+  useEffect(() => {
+    if ((+paramsObj?.page > +totalPages) & (+totalPages > 0)) {
+      paramsObj.page = +totalPages;
+      setSearchParams(paramsObj);
+      return;
+    }
+    if (paramsObj?.page) return;
+    setSearchParams({ page: 1 });
+  }, [paramsObj, setSearchParams, totalPages]);
+
   useEffect(() => {
     if (windowWidth > 0 && windowWidth < 1440 && limit !== 10) {
       setLimit(10);
@@ -37,13 +43,14 @@ export const DrinksPage = () => {
   useEffect(() => {
     async function loadDrinks() {
       try {
+        const { q = '', category = '', ingredient = '', page = 1 } = paramsObj;
         const response = await fetchDrinks({
           params: {
-            q: query,
-            category: category,
-            ingredient: ingredient,
-            page: page,
-            limit: limit,
+            q,
+            category,
+            ingredient,
+            page,
+            limit,
           },
         });
         if (!response.result.length) {
@@ -53,7 +60,6 @@ export const DrinksPage = () => {
         }
         setFilteredDrinks(response.result);
         setCount(response.count);
-        setRestPages(response.restPages);
       } catch (error) {
         if (error.code) {
           return toast.error(`Oops, something went wrong.`);
@@ -61,29 +67,38 @@ export const DrinksPage = () => {
       }
     }
     loadDrinks();
-  }, [query, category, ingredient, page, limit]);
+  }, [paramsObj, limit]);
+
+  const updateQueryPage = (parameter, value) => {
+    console.log('✋😎👉 ~ value:', value);
+    console.log('✋😎👉 ~ parameter:', parameter);
+    console.log('✋😎👉 ~ searchParams:', searchParams);
+
+    if (value === '') {
+      if (!delete paramsObj[parameter]) {
+        console.log('Error delete search parameter!');
+      }
+    } else {
+      paramsObj[parameter] = value;
+    }
+    setSearchParams(paramsObj);
+  };
 
   return (
     <StyledMainContainer>
       <PageTitle title="Drinks" />
       <DrinksSearch
-        query={query}
-        setQuery={setQuery}
-        category={category}
-        setCategory={setCategory}
-        ingredient={ingredient}
-        setIngredient={setIngredient}
-        setPage={setPage}
+        query={paramsObj.q ?? ''}
+        category={paramsObj.category ?? '...'}
+        ingredient={paramsObj.ingredient ?? '...'}
+        onChange={updateQueryPage}
       />
       <Drinks drinks={filteredDrinks} />
-      {totalPages > 1 && (
-        <Paginator
-          page={page}
-          setPage={setPage}
-          totalPages={totalPages}
-          restPages={restPages}
-        />
-      )}
+      <Paginator
+        page={+paramsObj.page}
+        totalPages={+totalPages}
+        onChange={updateQueryPage}
+      />
     </StyledMainContainer>
   );
 };

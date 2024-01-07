@@ -18,7 +18,7 @@ export const StyledList = styled.ul`
   align-items: center;
 `;
 
-export const StyledItem = styled.div`
+export const StyledItem = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;

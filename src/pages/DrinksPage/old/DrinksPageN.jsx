@@ -6,8 +6,8 @@ import { Drinks } from 'components/Drinks/Drinks';
 import { DrinksSearch } from 'components/DrinksSearch/DrinksSearch';
 import { PageTitle } from 'components/PageTitle/PageTitle';
 import Paginator from 'components/Paginator/Paginator';
-import { StyledMainContainer } from './DrinksPage.styled';
-import { fetchDrinks } from '../../components/DrinksSearch/DrinkSearchApi';
+import { StyledMainContainer } from '../DrinksPage.styled';
+import { fetchDrinks } from '../../../components/DrinksSearch/DrinkSearchApi';
 import { useWindowWidth } from 'hooks/useWindowWidth';
 import { useSearchParams } from 'react-router-dom';
 
@@ -17,10 +17,10 @@ export const DrinksPage = () => {
     () => Object.fromEntries([...searchParams]),
     [searchParams]
   );
-  const { q, category, ingredient, page, limit } = paramsObj;
+  const { q, category, ingredient, page } = paramsObj;
 
   const [count, setCount] = useState(0);
-  const [restPages, setRestPages] = useState(0);
+  const [limit, setLimit] = useState(10);
   const [filteredDrinks, setFilteredDrinks] = useState([]);
   const totalPages = Math.ceil(count / limit);
   const windowWidth = useWindowWidth();
@@ -52,7 +52,6 @@ export const DrinksPage = () => {
         }
         setFilteredDrinks(response.result);
         setCount(response.count);
-        setRestPages(response.restPages);
       } catch (error) {
         if (error.code) {
           return toast.error(`Oops, something went wrong.`);
@@ -81,7 +80,6 @@ export const DrinksPage = () => {
         page={page}
         onChange={updateQueryPage}
         totalPages={totalPages}
-        restPages={restPages}
       />
     </StyledMainContainer>
   );

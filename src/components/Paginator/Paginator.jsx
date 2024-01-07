@@ -8,15 +8,9 @@ import {
 import sprite from 'assets/sprite.svg';
 import { useWindowWidth } from 'hooks/useWindowWidth';
 
-const Paginator = ({ page, onChange, totalPages, restPages }) => {
+const Paginator = ({ page = 1, totalPages = 1, onChange }) => {
   const [pagesToShow, setPagesToShow] = useState(5);
   const windowWidth = useWindowWidth();
-
-  // const handlePageChange = newPage => {
-  //   if (newPage >= 1 && newPage <= totalPages) {
-  //     setPage(newPage);
-  //   }
-  // };
 
   useEffect(() => {
     if (windowWidth > 0 && windowWidth < 768 && pagesToShow !== 5) {
@@ -27,20 +21,26 @@ const Paginator = ({ page, onChange, totalPages, restPages }) => {
   }, [windowWidth, pagesToShow]);
 
   const getVisiblePageNumbers = () => {
-    // let visiblePages = Array.from({ length: pagesToShow }, (_, k) => k + 1);
-
-    const min = page > pagesToShow ? page - pagesToShow + 1 : 1;
-    const max = totalPages < pagesToShow ? totalPages + 1 : pagesToShow + min;
-    let visiblePages = Array.from({ length: max - min }, (_, i) => i + min);
-
-    return visiblePages;
+    const minNum = page > pagesToShow ? page - pagesToShow + 1 : 1;
+    const maxNum =
+      totalPages < pagesToShow ? totalPages + 1 : pagesToShow + minNum;
+    return Array.from({ length: maxNum - minNum }, (_, i) => i + minNum);
   };
 
   return (
     <StyledPagination>
       <StyledArrows
         type="button"
-        onClick={() => onChange(page - 1)}
+        onClick={() => onChange('page', 1)}
+        disabled={page === 1}
+      >
+        <svg style={{ width: 14, height: 20, marginRight: 30 }}>
+          <use href={sprite + '#icon-arrow-left'} />
+        </svg>
+      </StyledArrows>
+      <StyledArrows
+        type="button"
+        onClick={() => onChange('page', page - 1)}
         disabled={page === 1}
       >
         <svg style={{ width: 14, height: 20, marginRight: 30 }}>
@@ -52,7 +52,7 @@ const Paginator = ({ page, onChange, totalPages, restPages }) => {
           <li key={index}>
             <StyledItem
               key={index}
-              onClick={() => onChange(number)}
+              onClick={() => onChange('page', number)}
               className={number === page ? 'active' : ''}
             >
               {number}
@@ -62,7 +62,16 @@ const Paginator = ({ page, onChange, totalPages, restPages }) => {
       </StyledList>
       <StyledArrows
         type="button"
-        onClick={() => onChange(page + 1)}
+        onClick={() => onChange('page', page + 1)}
+        disabled={page === totalPages}
+      >
+        <svg style={{ width: 14, height: 20 }}>
+          <use href={sprite + '#icon-arrow-right'} />
+        </svg>
+      </StyledArrows>
+      <StyledArrows
+        type="button"
+        onClick={() => onChange('page', totalPages)}
         disabled={page === totalPages}
       >
         <svg style={{ width: 14, height: 20 }}>
