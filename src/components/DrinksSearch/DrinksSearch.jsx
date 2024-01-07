@@ -8,38 +8,15 @@ import {
 
 import { fetchCategories, fetchIngerients } from './DrinkSearchApi';
 
-export const DrinksSearch = ({
-  query,
-  setQuery,
-  category,
-  setCategory,
-  ingredient,
-  setIngredient,
-  setPage,
-}) => {
+export const DrinksSearch = ({ query, category, ingredient, onChange }) => {
   const [categories, setCategories] = useState([]);
-  const categoryOptions = categories.map(category => {
+  const categorySelectOptions = categories.map(category => {
     return { value: category, label: category };
   });
   const [ingredients, setIngredients] = useState([]);
-  const ingredientOptions = ingredients.map(ingredient => {
+  const ingredientSelectOptions = ingredients.map(ingredient => {
     return { value: ingredient.title, label: ingredient.title };
   });
-
-  const handleTextChange = e => {
-    setQuery(e.target.value);
-    setPage(1);
-  };
-
-  const handleCategoryChange = e => {
-    !e ? setCategory('') : setCategory(e.value);
-    setPage(1);
-  };
-
-  const handleIngredientChange = e => {
-    !e ? setIngredient('') : setIngredient(e.value);
-    setPage(1);
-  };
 
   useEffect(() => {
     async function loadCategories() {
@@ -73,26 +50,26 @@ export const DrinksSearch = ({
           type="text"
           placeholder="Enter the text"
           name="query"
-          // value={searchQuery}
-          onChange={handleTextChange}
+          value={query}
+          onChange={e => onChange('q', e.target.value)}
         />
         <StyledSelectInput
           classNamePrefix="Select"
-          onChange={handleCategoryChange}
+          onChange={e => onChange('category', e.target.value)}
           placeholder="All categories"
           name="category"
           defaultValue={category}
           isClearable
-          options={categoryOptions}
+          options={categorySelectOptions}
         />
         <StyledSelectInput
-          onChange={handleIngredientChange}
+          onChange={e => onChange('ingredient', e.target.value)}
           classNamePrefix="Select"
           name="ingredient"
           placeholder="Ingredients"
           defaultValue={ingredient}
           isClearable
-          options={ingredientOptions}
+          options={ingredientSelectOptions}
         ></StyledSelectInput>
       </StyledFilterContainer>
     </label>
