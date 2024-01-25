@@ -19,8 +19,6 @@ export const DrinksSearch = ({ query, category, ingredient, onChange }) => {
     return { value: ingredient.title, label: ingredient.title };
   });
   ingredientSelectOptions.unshift({ value: '', label: '...' });
-  console.log('✋😎👉 ~ ingredient:', ingredient);
-  console.log('✋😎👉 ~ category:', category);
 
   useEffect(() => {
     async function loadCategories() {
@@ -61,18 +59,11 @@ export const DrinksSearch = ({ query, category, ingredient, onChange }) => {
             onChange('q', e.target.value);
           }}
         />
-        {/* <select
-          value={selectedFruit} // ...force the select's value to match the state variable...
-          onChange={e => setSelectedFruit(e.target.value)} // ... and update the state variable on any change!
-        >
-          <option value="apple">Apple</option>
-          <option value="banana">Banana</option>
-          <option value="orange">Orange</option>
-        </select> */}
         <StyledSelectInput
           name="category"
           classNamePrefix="Select"
-          placeholder="..."
+          // placeholder="..."
+          isClearable
           defaultValue={category}
           options={categorySelectOptions}
           onChange={e => onChange('category', e.value)}
@@ -80,11 +71,12 @@ export const DrinksSearch = ({ query, category, ingredient, onChange }) => {
         <StyledSelectInput
           name="ingredient"
           classNamePrefix="Select"
-          placeholder="..."
+          // placeholder="..."
+          isClearable
           defaultValue={ingredient}
           options={ingredientSelectOptions}
           onChange={e => onChange('ingredient', e.value)}
-        ></StyledSelectInput>
+        />
       </StyledFilterContainer>
     </label>
   );

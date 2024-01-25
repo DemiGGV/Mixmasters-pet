@@ -29,7 +29,7 @@ export const DrinksPage = () => {
       return;
     }
     if (paramsObj?.page) return;
-    setSearchParams({ page: 1 });
+    // setSearchParams({ page: 1 });
   }, [paramsObj, setSearchParams, totalPages]);
 
   useEffect(() => {
@@ -89,8 +89,8 @@ export const DrinksPage = () => {
       <PageTitle title="Drinks" />
       <DrinksSearch
         query={paramsObj.q ?? ''}
-        category={paramsObj.category ?? '...'}
-        ingredient={paramsObj.ingredient ?? '...'}
+        category={paramsObj.category}
+        ingredient={paramsObj.ingredient}
         onChange={updateQueryPage}
       />
       <Drinks drinks={filteredDrinks} />
