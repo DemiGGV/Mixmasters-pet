@@ -16,11 +16,14 @@ export const DrinksPage = () => {
     () => Object.fromEntries([...searchParams]),
     [searchParams]
   );
+  const windowWidth = useWindowWidth();
   const [count, setCount] = useState(0);
-  const [limit, setLimit] = useState(10);
+  const [limit, setLimit] = useState(() => {
+    if (windowWidth > 0 && windowWidth < 1440) return 10;
+    else if (windowWidth >= 1440) return 9;
+  });
   const [filteredDrinks, setFilteredDrinks] = useState([]);
   const totalPages = Math.ceil(count / limit);
-  const windowWidth = useWindowWidth();
 
   useEffect(() => {
     if ((+paramsObj?.page > +totalPages) & (+totalPages > 0)) {
@@ -29,7 +32,7 @@ export const DrinksPage = () => {
       return;
     }
     if (paramsObj?.page) return;
-    // setSearchParams({ page: 1 });
+    setSearchParams({ page: 1 });
   }, [paramsObj, setSearchParams, totalPages]);
 
   useEffect(() => {

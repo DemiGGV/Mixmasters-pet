@@ -54,6 +54,7 @@ const Paginator = ({ page = 1, totalPages = 1, onChange }) => {
               key={index}
               onClick={() => onChange('page', number)}
               className={number === page ? 'active' : ''}
+              disabled={page === number}
             >
               {number}
             </StyledItem>
