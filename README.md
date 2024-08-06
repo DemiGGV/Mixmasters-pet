@@ -49,6 +49,9 @@ with others.
 
 Backend repository: https://github.com/DemiGGV/Mixmasters-Back
 
+GitHUB Pages:
+https://demiggv.github.io/Mixmasters-pet/
+
 Swagger: https://mixmasters.onrender.com/api-docs/#/
 
 ## Contributors
