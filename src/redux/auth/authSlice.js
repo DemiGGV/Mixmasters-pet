@@ -49,6 +49,7 @@ const handleSigninUser = (state, action) => {
   state.user = action.payload.user;
   state.token = action.payload.token;
   state.isLoggedIn = true;
+  state.isLoading = false;
   state.error = null;
 };
 // Logout user
@@ -56,6 +57,7 @@ const handleSignoutUser = (state, _) => {
   state.user = { name: null, birthdate: null, email: null };
   state.token = null;
   state.isLoggedIn = false;
+  state.isLoading = false;
   state.error = null;
 };
 // Update user

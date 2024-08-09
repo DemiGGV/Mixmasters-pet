@@ -29,7 +29,7 @@ import {
   selectGlasses,
 } from 'redux/filters/filtersSelectors';
 import { ErrorMessage } from 'formik';
-import { useAuth } from './useAuth';
+import { useAuth } from '../../../useAuth';
 import toast from 'react-hot-toast';
 
 export const DrinkDescriptionFields = ({ setFieldValue, touched, errors }) => {

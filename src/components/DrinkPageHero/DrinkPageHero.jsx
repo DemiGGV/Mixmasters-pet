@@ -14,7 +14,7 @@ import {
   ContainerImage,
 } from './DrinkPageHero.styled';
 import defaultImage from '../../assets/rectangle-1.png';
-import { useAuth } from './useAuth';
+import { useAuth } from '../../useAuth';
 import { useState } from 'react';
 
 export function DrinkPageHero({ drinkInfo }) {
