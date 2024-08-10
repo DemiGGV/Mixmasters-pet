@@ -5,7 +5,7 @@ import Background from 'components/SharedLayout/Background/Background';
 import { Wrap, Main, WelcomeMain } from './SharedLayout.styled';
 import Footer from 'components/Footer/Footer';
 import Loader from 'components/Loader/Loader';
-import { useAuth } from '../../useAuth';
+import { useAuth } from '../../hooks/useAuth';
 
 const SharedLayout = () => {
   const { isLoggedIn } = useAuth();
