@@ -1,28 +1,8 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-const slideIn = keyframes`
-  from {
-    transform: translateY(-100%);
-  }
-  to {
-    transform: translateY(0);
-  }
-`;
-
-const slideOut = keyframes`
-  from {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-`;
 
 export const Nav = styled.nav`
-  animation: ${props => (props.closing ? slideOut : slideIn)};
 
   @media (max-width: 767.98px) {
     top: 72.8px;

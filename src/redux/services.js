@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://mixmasters.onrender.com/api';
+// axios.defaults.baseURL = 'https://mixmasters.onrender.com/api';
+axios.defaults.baseURL = 'http://localhost:3003/api';
 
 // Utils
 

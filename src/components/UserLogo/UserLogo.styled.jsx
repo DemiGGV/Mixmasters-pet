@@ -1,24 +1,4 @@
-import styled, { keyframes } from 'styled-components';
-
-const slideIn = keyframes`
-  from {
-    transform: translateY(-100%);
-  }
-  to {
-    transform: translateY(0);
-  }
-`;
-
-const slideOut = keyframes`
-  from {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-`;
+import styled from 'styled-components';
 
 export const UserMenu = styled.div`
   /* padding: 20px 0px; */
@@ -28,8 +8,6 @@ export const UserMenu = styled.div`
   align-items: center;
   transition: transform;
   cursor: pointer;
-  animation: ${props => (props.closing ? slideOut : slideIn)} 0.8s
-    cubic-bezier(0.42, 0, 0.58, 1) forwards;
 
   @media (min-width: 768px) {
     gap: 14px;
