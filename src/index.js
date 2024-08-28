@@ -12,7 +12,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter basename="/mixmasters-pet">
+        <BrowserRouter basename="/Mixmasters-pet">
           <Toaster position="top-right" reverseOrder={false} />
           <App />
         </BrowserRouter>
